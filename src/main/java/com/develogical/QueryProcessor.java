@@ -12,6 +12,9 @@ public class QueryProcessor {
         if (query.toLowerCase().contains("imperial")) {
             return "Imperial College is a university in London";
         }
+        if (query.toLowerCase().contains("gnn")) {
+            return "Graph neural networks (GNNs) are neural models that capture the dependence of graphs via message passing between nodes."
+        }
         return "";
     }
 }
