@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.stream.IntStream;
 
 public class QueryProcessor {
     
@@ -16,6 +17,12 @@ public class QueryProcessor {
         }
         System.out.println(numbers);
         return numbers;
+    }
+
+    private boolean isPrime(int number) {
+        return number > 1 
+          && IntStream.rangeClosed(2, (int) Math.sqrt(number))
+          .noneMatch(n -> (number % n == 0));
     }
 
     public String process(String query) {
@@ -56,6 +63,19 @@ public class QueryProcessor {
                 }
             }
             return "none";
+        }
+
+        if (query.toLowerCase().contains("primes")) {
+            List<Integer> numbers = getNumbersAfterColon(query);
+            for (Integer i : numbers) {
+                if (isPrime(i)) {
+                    return i.toString();
+                }
+            }
+        }
+
+        if (query.toLowerCase().contains("james bond")) {
+            return "Sean Connery";
         }
         return "";
     }

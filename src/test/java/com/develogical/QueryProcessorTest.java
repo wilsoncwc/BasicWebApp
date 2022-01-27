@@ -43,15 +43,32 @@ public class QueryProcessorTest {
     }
 
     @Test
+    public void knowsAboutPrimes() throws Exception {
+        assertThat(queryProcessor.process("which of the following numbers are primes: 572, 131, 74, 99"), containsString("131"));
+    }
+
+    @Test
     public void knowsAboutAddingNumbers() throws Exception {
         assertThat(queryProcessor.process("what is 206 plus 202"),
                 containsString("408"));
     }
 
+    // @Test
+    // public void knowsAboutSubtractingNumbers() throws Exception {
+    //     assertThat(queryProcessor.process("what is 206 plus 202"),
+    //             containsString("408"));
+    // }
+
     @Test
     public void knowsAboutSquareAndCubeNumbers() throws Exception {
         assertThat(queryProcessor.process("which of the following numbers is both a square and a cube: 324, 280"),
                 containsString("none"));
+    }
+
+    @Test
+    public void knowsAboutJamesBond() throws Exception {
+        assertThat(queryProcessor.process("who played James Bond in the film Dr No"),
+                containsString("Sean Connery"));
     }
 
     @Test
