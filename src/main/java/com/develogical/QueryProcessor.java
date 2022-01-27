@@ -30,6 +30,14 @@ public class QueryProcessor {
             System.out.println(numbers);
             return Collections.max(numbers).toString();
         }
+
+        if (query.toLowerCase().contains("plus")) {
+            List<String> splits = Arrays.asList(query.split(" "));
+            int plusIndex = splits.indexOf("plus");
+            int num1 = Integer.parseInt(splits.get(plusIndex - 1));
+            int num2 = Integer.parseInt(splits.get(plusIndex + 1));
+            return "" + (num1 + num2);
+        }
         return "";
     }
 }
