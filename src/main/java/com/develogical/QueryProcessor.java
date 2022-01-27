@@ -76,18 +76,18 @@ public class QueryProcessor {
             }
             return "none";
         }
-        if (query.toLowerCase().contains("square and a cube")) {
-            List<Integer> numbers = getNumbersAfterColon(query);
-            for (Integer i : numbers) {
-                double sqrt = Math.sqrt(i);
-                if (sqrt % 1 == 0) {
-                    double cuberoot = Math.cbrt(i);
-                    if (cuberoot % 1 == 0 ) {
-                        return i.toString();
-                    }
-                }
-            }
-            return "none";
+        if (query.toLowerCase().contains("Fibonacci")) {
+            // List<Integer> numbers = getNumbersAfterColon(query);
+            // for (Integer i : numbers) {
+            //     double sqrt = Math.sqrt(i);
+            //     if (sqrt % 1 == 0) {
+            //         double cuberoot = Math.cbrt(i);
+            //         if (cuberoot % 1 == 0 ) {
+            //             return i.toString();
+            //         }
+            //     }
+            // }
+            // return "none";
         }
 
         if (query.toLowerCase().contains("primes")) {
