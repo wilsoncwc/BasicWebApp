@@ -51,6 +51,14 @@ public class QueryProcessor {
             return "" + (num1 + num2);
         }
 
+        if (query.toLowerCase().contains("minus")) {
+            List<String> splits = Arrays.asList(query.split(" "));
+            int plusIndex = splits.indexOf("minus");
+            int num1 = Integer.parseInt(splits.get(plusIndex - 1));
+            int num2 = Integer.parseInt(splits.get(plusIndex + 1));
+            return "" + (num1 - num2);
+        }
+
         if (query.toLowerCase().contains("square and a cube")) {
             List<Integer> numbers = getNumbersAfterColon(query);
             for (Integer i : numbers) {

@@ -53,11 +53,11 @@ public class QueryProcessorTest {
                 containsString("408"));
     }
 
-    // @Test
-    // public void knowsAboutSubtractingNumbers() throws Exception {
-    //     assertThat(queryProcessor.process("what is 206 plus 202"),
-    //             containsString("408"));
-    // }
+    @Test
+    public void knowsAboutSubtractingNumbers() throws Exception {
+        assertThat(queryProcessor.process("what is 10 minus 13"),
+                containsString("-3"));
+    }
 
     @Test
     public void knowsAboutSquareAndCubeNumbers() throws Exception {
