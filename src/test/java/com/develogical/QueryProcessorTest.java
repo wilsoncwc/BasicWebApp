@@ -48,6 +48,11 @@ public class QueryProcessorTest {
     }
 
     @Test
+    public void knowsAboutFibo() throws Exception {
+        assertThat(queryProcessor.process("what is the 4th number in the Fibonacci sequence"), containsString("3"));
+    }
+
+    @Test
     public void knowsAboutAddingNumbers() throws Exception {
         assertThat(queryProcessor.process("what is 206 plus 202"),
                 containsString("408"));

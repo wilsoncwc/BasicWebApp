@@ -15,7 +15,7 @@ public class QueryProcessor {
             String nospace = item.replaceAll("\\s+","");
             try {
                 numbers.add(Integer.parseInt(nospace));
-            } finally {
+            } catch(NumberFormatException e) {
                 // Do nothing    
             }
         }
@@ -63,6 +63,19 @@ public class QueryProcessor {
             return "" + (num1 - num2);
         }
 
+        if (query.toLowerCase().contains("square and a cube")) {
+            List<Integer> numbers = getNumbersAfterColon(query);
+            for (Integer i : numbers) {
+                double sqrt = Math.sqrt(i);
+                if (sqrt % 1 == 0) {
+                    double cuberoot = Math.cbrt(i);
+                    if (cuberoot % 1 == 0 ) {
+                        return i.toString();
+                    }
+                }
+            }
+            return "none";
+        }
         if (query.toLowerCase().contains("square and a cube")) {
             List<Integer> numbers = getNumbersAfterColon(query);
             for (Integer i : numbers) {
