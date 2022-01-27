@@ -98,11 +98,13 @@ public class QueryProcessor {
 
         if (query.toLowerCase().contains("primes")) {
             List<Integer> numbers = getNumbersAfterColon(query);
+            List<String> primes = new ArrayList<>();
             for (Integer i : numbers) {
                 if (isPrime(i)) {
-                    return i.toString();
+                    primes.add(i.toString());
                 }
             }
+            return String.join(", ", primes);
         }
 
         if (query.toLowerCase().contains("james bond")) {
