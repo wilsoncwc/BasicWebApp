@@ -32,6 +32,13 @@ public class QueryProcessorTest {
                 containsString("Graph neural networks"));
     }
 
+    
+    @Test
+    public void knowsAboutBiggestNumber() throws Exception {
+        assertThat(queryProcessor.process("which of the following numbers is the largest: 674, 388, 27, 93"),
+                containsString("674"));
+    }
+    
     @Test
     public void isNotCaseSensitive() throws Exception {
         assertThat(queryProcessor.process("shakespeare"), containsString("playwright"));
