@@ -13,7 +13,11 @@ public class QueryProcessor {
         List<Integer> numbers = new ArrayList<>();
         for (String item : items) {
             String nospace = item.replaceAll("\\s+","");
-            numbers.add(Integer.parseInt(nospace));
+            try {
+                numbers.add(Integer.parseInt(nospace));
+            } finally {
+                // Do nothing    
+            }
         }
         System.out.println(numbers);
         return numbers;
