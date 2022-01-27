@@ -23,6 +23,18 @@ public class QueryProcessor {
         return numbers;
     }
 
+    private int fib(int n) {
+        int a = 0, b = 1, c;
+        if (n == 0)
+            return a;
+        for (int i = 2; i <= n; i++) {
+            c = a + b;
+            a = b;
+            b = c;
+        }
+        return b;
+    }
+
     private boolean isPrime(int number) {
         return number > 1 
           && IntStream.rangeClosed(2, (int) Math.sqrt(number))
@@ -76,18 +88,12 @@ public class QueryProcessor {
             }
             return "none";
         }
-        if (query.toLowerCase().contains("Fibonacci")) {
-            // List<Integer> numbers = getNumbersAfterColon(query);
-            // for (Integer i : numbers) {
-            //     double sqrt = Math.sqrt(i);
-            //     if (sqrt % 1 == 0) {
-            //         double cuberoot = Math.cbrt(i);
-            //         if (cuberoot % 1 == 0 ) {
-            //             return i.toString();
-            //         }
-            //     }
-            // }
-            // return "none";
+        if (query.toLowerCase().contains("fibonacci")) {
+            List<String> splits = Arrays.asList(query.split(" "));
+            int numberIndex = splits.indexOf("number");
+            String numStr = splits.get(numberIndex - 1).replaceAll("[^\\d.]", "");
+            int num = Integer.parseInt(numStr);
+            return "" + fib(num);
         }
 
         if (query.toLowerCase().contains("primes")) {
