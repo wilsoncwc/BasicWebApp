@@ -5,6 +5,18 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class QueryProcessor {
+    
+    private List<Integer> getNumbersAfterColon(String query) {
+        String[] splits = query.split(":");
+        List<String> items = Arrays.asList(splits[1].split("\\s*,\\s*"));
+        List<Integer> numbers = new ArrayList<>();
+        for (String item : items) {
+            String nospace = item.replaceAll("\\s+","");
+            numbers.add(Integer.parseInt(nospace));
+        }
+        System.out.println(numbers);
+        return numbers;
+    }
 
     public String process(String query) {
         if (query.toLowerCase().contains("shakespeare")) {
@@ -20,14 +32,7 @@ public class QueryProcessor {
             return "Graph neural networks (GNNs) are neural models that capture the dependence of graphs via message passing between nodes.";
         }
         if (query.toLowerCase().contains("largest")) {
-            String[] splits = query.split(":");
-            List<String> items = Arrays.asList(splits[1].split("\\s*,\\s*"));
-            List<Integer> numbers = new ArrayList<>();
-            for (String item : items) {
-                String nospace = item.replaceAll("\\s+","");
-                numbers.add(Integer.parseInt(nospace));
-            }
-            System.out.println(numbers);
+            List<Integer> numbers = getNumbersAfterColon(query);
             return Collections.max(numbers).toString();
         }
 
@@ -37,6 +42,20 @@ public class QueryProcessor {
             int num1 = Integer.parseInt(splits.get(plusIndex - 1));
             int num2 = Integer.parseInt(splits.get(plusIndex + 1));
             return "" + (num1 + num2);
+        }
+
+        if (query.toLowerCase().contains("square and a cube")) {
+            List<Integer> numbers = getNumbersAfterColon(query);
+            for (Integer i : numbers) {
+                double sqrt = Math.sqrt(i);
+                if (sqrt % 1 == 0) {
+                    double cuberoot = Math.cbrt(i);
+                    if (cuberoot % 1 == 0 ) {
+                        return i.toString();
+                    }
+                }
+            }
+            return "none";
         }
         return "";
     }

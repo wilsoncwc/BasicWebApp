@@ -37,12 +37,21 @@ public class QueryProcessorTest {
     public void knowsAboutBiggestNumber() throws Exception {
         assertThat(queryProcessor.process("which of the following numbers is the largest: 674, 388, 27, 93"),
                 containsString("674"));
+
+        assertThat(queryProcessor.process("which of the following numbers is the largest: 24, 738"),
+        containsString("738"));
     }
 
     @Test
     public void knowsAboutAddingNumbers() throws Exception {
         assertThat(queryProcessor.process("what is 206 plus 202"),
                 containsString("408"));
+    }
+
+    @Test
+    public void knowsAboutSquareAndCubeNumbers() throws Exception {
+        assertThat(queryProcessor.process("which of the following numbers is both a square and a cube: 324, 280"),
+                containsString("none"));
     }
 
     @Test
